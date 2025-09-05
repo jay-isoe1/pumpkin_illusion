@@ -501,15 +501,6 @@ const UI = {
   set FG_Shape(name) { shapeIndex = shapeNames.indexOf(name); },
 };
 
-function setupGUI() {
-  const gui = new dat.GUI();
-
-  gui.add(UI, 'bgSpeed', 0.001, 0.1, 0.001);
-  gui.add(UI, 'bgScale', 0.5, 2.0, 0.01);
-  gui.add(UI, 'bgRadiusStep', 0.4, 3.0, 0.01);
-  gui.add(UI, 'FG_Shape', shapeNames);
-}
-
 // Lab -> sRGB helpers (D65)
 function labToRGB(L, C, thetaDeg) {
   const thetaRad = radians(thetaDeg);
