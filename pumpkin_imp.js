@@ -538,6 +538,7 @@ function setupGUI() {
   gui.add(UI, 'bgScale', 0.5, 2.0, 0.01);
   gui.add(UI, 'bgRadiusStep', 0.4, 3.0, 0.01);
   gui.add(UI, 'FG_Shape', shapeNames);
+  gui.add(UI, 'BG_Shape', shapeNames);
 }
 
 
