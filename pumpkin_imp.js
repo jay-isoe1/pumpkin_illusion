@@ -38,13 +38,7 @@ function setup() {
   setupGUI();
   noStroke();
   colorMode(RGB, 255);
-
-  if (typeof dat !== 'undefined' && typeof dat.GUI === 'function') {
-    setupGUI();
-  } else {
-    console.error('[dat.GUI] not loaded. Check <script> order or CDN reachability.');
-  }
-
+  
   // 이미지 기준 마스크 생성
   img.resize(600, 600);
   maskImg = createImage(img.width, img.height);
@@ -536,6 +530,14 @@ function xyzToSRGB(X, Y, Z) {
 
 function gammaCorrect(c) {
   return (c <= 0.0031308) ? 12.92 * c : (1.055 * Math.pow(c, 1.0/2.4) - 0.055);
+}
+
+function setupGUI() {
+  gui = new dat.GUI();
+  gui.add(UI, 'bgSpeed', 0.001, 0.1, 0.001);
+  gui.add(UI, 'bgScale', 0.5, 2.0, 0.01);
+  gui.add(UI, 'bgRadiusStep', 0.4, 3.0, 0.01);
+  gui.add(UI, 'FG_Shape', shapeNames);
 }
 
 
