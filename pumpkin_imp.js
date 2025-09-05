@@ -29,7 +29,6 @@ let bgAngleStepDeg = 137.5, bgRadiusStep = 1.2;
 const edgeMargin = 3;
 
 function preload() {
-  // 로컬 asset — 반드시 상대경로 사용 (GitHub Pages에서 file:// 금지)
   img = loadImage("assets/pumpkin_bgrmv.png", () => {
     // ok
   });
