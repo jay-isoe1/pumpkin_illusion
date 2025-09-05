@@ -1,40 +1,3 @@
-// Lab -> sRGB helpers (D65)
-function labToRGB(L, C, thetaDeg) {
-  const thetaRad = radians(thetaDeg);
-  const a = C * Math.cos(thetaRad);
-  const b = C * Math.sin(thetaRad);
-  const [X,Y,Z] = labToXYZ(L, a, b);
-  const [r,g,bv] = xyzToSRGB(X,Y,Z);
-  return color(constrain(r,0,255), constrain(g,0,255), constrain(bv,0,255));
-}
-
-function labToXYZ(L, a, b) {
-  const Xr = 0.95047, Yr = 1.00000, Zr = 1.08883;
-  const fy = (L + 16) / 116.0;
-  const fx = fy + (a / 500.0);
-  const fz = fy - (b / 200.0);
-  const X = Xr * fInv(fx);
-  const Y = Yr * fInv(fy);
-  const Z = Zr * fInv(fz);
-  return [X,Y,Z];
-}
-
-function fInv(t) {
-  const delta = 6.0/29.0;
-  return (t > delta) ? t*t*t : 3*delta*delta*(t - 4.0/29.0);
-}
-
-function xyzToSRGB(X, Y, Z) {
-  const rLin = 3.2406*X - 1.5372*Y - 0.4986*Z;
-  const gLin = -0.9689*X + 1.8758*Y + 0.0415*Z;
-  const bLin = 0.0557*X - 0.2040*Y + 1.0570*Z;
-  return [ gammaCorrect(rLin)*255, gammaCorrect(gLin)*255, gammaCorrect(bLin)*255 ];
-}
-
-function gammaCorrect(c) {
-  return (c <= 0.0031308) ? 12.92 * c : (1.055 * Math.pow(c, 1.0/2.4) - 0.055);
-}
-
 // ===== Globals (types removed) =====
 let bgImage = null;
 let bgScale = 0.8, bgOffsetX = 0, bgOffsetY = 15;
@@ -78,6 +41,12 @@ function setup() {
   setupGUI();
   noStroke();
   colorMode(RGB, 255);
+
+  if (typeof dat !== 'undefined' && typeof dat.GUI === 'function') {
+    setupGUI();
+  } else {
+    console.error('[dat.GUI] not loaded. Check <script> order or CDN reachability.');
+  }
 
   // 이미지 기준 마스크 생성
   img.resize(600, 600);
@@ -544,7 +513,42 @@ function setupGUI() {
   gui.add(UI, 'FG_Shape', shapeOptions);
 }
 
+// Lab -> sRGB helpers (D65)
+function labToRGB(L, C, thetaDeg) {
+  const thetaRad = radians(thetaDeg);
+  const a = C * Math.cos(thetaRad);
+  const b = C * Math.sin(thetaRad);
+  const [X,Y,Z] = labToXYZ(L, a, b);
+  const [r,g,bv] = xyzToSRGB(X,Y,Z);
+  return color(constrain(r,0,255), constrain(g,0,255), constrain(bv,0,255));
+}
 
+function labToXYZ(L, a, b) {
+  const Xr = 0.95047, Yr = 1.00000, Zr = 1.08883;
+  const fy = (L + 16) / 116.0;
+  const fx = fy + (a / 500.0);
+  const fz = fy - (b / 200.0);
+  const X = Xr * fInv(fx);
+  const Y = Yr * fInv(fy);
+  const Z = Zr * fInv(fz);
+  return [X,Y,Z];
+}
+
+function fInv(t) {
+  const delta = 6.0/29.0;
+  return (t > delta) ? t*t*t : 3*delta*delta*(t - 4.0/29.0);
+}
+
+function xyzToSRGB(X, Y, Z) {
+  const rLin = 3.2406*X - 1.5372*Y - 0.4986*Z;
+  const gLin = -0.9689*X + 1.8758*Y + 0.0415*Z;
+  const bLin = 0.0557*X - 0.2040*Y + 1.0570*Z;
+  return [ gammaCorrect(rLin)*255, gammaCorrect(gLin)*255, gammaCorrect(bLin)*255 ];
+}
+
+function gammaCorrect(c) {
+  return (c <= 0.0031308) ? 12.92 * c : (1.055 * Math.pow(c, 1.0/2.4) - 0.055);
+}
 
 
 // -------- mouse wheel (BG tuning) ----
