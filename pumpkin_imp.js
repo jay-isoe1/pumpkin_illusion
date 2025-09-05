@@ -493,6 +493,9 @@ const UI = {
 
   get FG_Shape() { return shapeNames[shapeIndex]; },
   set FG_Shape(name) { shapeIndex = shapeNames.indexOf(name); },
+
+  get BG_Shape() { return shapeNames[bgShapeIndex]; },
+  set BG_Shape(name) { bgShapeIndex = shapeNames.indexOf(name); },
 };
 
 // Lab -> sRGB helpers (D65)
