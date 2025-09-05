@@ -30,9 +30,7 @@ const edgeMargin = 3;
 
 function preload() {
   img = loadImage("assets/pumpkin_bgrmv.png", () => {
-    // ok
   });
-  // bgImage = loadImage("assets/pumpkin_another.jpg");
 }
 
 function setup() {
