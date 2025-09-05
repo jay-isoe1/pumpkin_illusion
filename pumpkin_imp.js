@@ -510,7 +510,7 @@ function setupGUI() {
   gui.add(UI, 'bgSpeed', 0.001, 0.1, 0.001);
   gui.add(UI, 'bgScale', 0.5, 2.0, 0.01);
   gui.add(UI, 'bgRadiusStep', 0.4, 3.0, 0.01);
-  gui.add(UI, 'FG_Shape', shapeOptions);
+  gui.add(UI, 'FG_Shape', shapeNames);
 }
 
 // Lab -> sRGB helpers (D65)
