@@ -191,7 +191,7 @@ function floodFill(startX, startY, label, w, h) {
 function isPumpkin(ix, iy) {
   if (ix<0 || ix>=maskImg.width || iy<0 || iy>=maskImg.height) return false;
   const idxPix = 4*(ix + iy*maskImg.width);
-  return brightnessFromPixels(maskImg.pixels, idxPix) > 128;
+  return brightnessFromPixels(maskImg.pixels, idxPix) < 128;
 }
 
 function isNearPumpkin(ix, iy, margin) {
