@@ -229,7 +229,7 @@ function drawBackgroundPattern() {
     }
 
     const ix = int(x - imgX), iy = int(y - imgY);
-    //if (isPumpkin(ix, iy) || isNearPumpkin(ix, iy, edgeMargin)) continue;
+    if (isPumpkin(ix, iy) || isNearPumpkin(ix, iy, edgeMargin)) continue;
 
     const lr = computeBGShadow(x, y, centerX, centerY, bgShadowModeIndex, shadowNorm);
 
