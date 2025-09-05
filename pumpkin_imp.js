@@ -492,10 +492,7 @@ const UI = {
   set bgRadiusStep(v) { bgRadiusStep = v; },
 
   get FG_Shape() { return shapeNames[shapeIndex]; },
-  set FG_Shape(name) { shapeIndex = shapeNames.indexOf(name); },
-
-  get BG_Shape() { return shapeNames[bgShapeIndex]; },
-  set BG_Shape(name) { bgShapeIndex = shapeNames.indexOf(name); },
+  set FG_Shape(name) { shapeIndex = shapeNames.indexOf(name); }
 };
 
 // Lab -> sRGB helpers (D65)
@@ -541,7 +538,6 @@ function setupGUI() {
   gui.add(UI, 'bgScale', 0.5, 2.0, 0.01);
   gui.add(UI, 'bgRadiusStep', 0.4, 3.0, 0.01);
   gui.add(UI, 'FG_Shape', shapeNames);
-  gui.add(UI, 'BG_Shape', shapeNames);
 }
 
 
