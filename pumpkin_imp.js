@@ -8,7 +8,7 @@ let labels = [];
 let imageFadesWithBG = true, stampStrength = 1;
 let pg;
 
-let isBackgroundFading = true, bgPhase = 0.0, bgSpeed = 0.02, shadowNorm = 0.5, shadowOffset = 3.0;
+let isBackgroundFading = true, bgPhase = 0.0, bgSpeed = 0.03, shadowNorm = 0.5, shadowOffset = 3.0;
 
 let imgX = 0, imgY = 0;
 let pgBgAlpha = 120;
@@ -20,8 +20,8 @@ let labelColors = new Map(), labelSumX = new Map(), labelSumY = new Map(), label
 
 let shapeNames = ["Droplet","Ellipse","Circle","Diamond","Star","Petal"];
 let shapeIndex = 0;        // FG
-let bgShapeIndex = 2;      // BG (Circle)
-let spiralModeIndex = 1;   // 1=Golden, 2=Double
+let bgShapeIndex = 4;      // BG (Circle)
+let spiralModeIndex = 2;   // 1=Golden, 2=Double
 let bgShadowModeIndex = 0; // 0=Fade Sync, 1=Angular
 
 let bgAngleStepDeg = 137.5, bgRadiusStep = 1.2;
