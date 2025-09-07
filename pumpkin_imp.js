@@ -19,7 +19,7 @@ let placed = [];
 let labelColors = new Map(), labelSumX = new Map(), labelSumY = new Map(), labelCount = new Map(), labelHueMap = new Map();
 
 let shapeNames = ["Droplet","Ellipse","Circle","Diamond","Star","Petal"];
-let shapeIndex = 0;        // FG
+let shapeIndex = 2;        // FG
 let bgShapeIndex = 4;      // BG (Circle)
 let spiralModeIndex = 2;   // 1=Golden, 2=Double
 let bgShadowModeIndex = 0; // 0=Fade Sync, 1=Angular
