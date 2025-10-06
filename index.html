@@ -1,28 +1,37 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pumpkin Sketch</title>
+
     <style>
       html, body {
         margin: 0;
         padding: 0;
       }
+      /* p5가 만드는 <canvas>를 중앙 정렬 */
       canvas {
         display: block;
-        margin: 100px auto 24px; /* center the canvas */
+        margin: 100px auto 24px;
       }
+    </style>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pumpkin Sketch</title>
+    <!-- p5.js & dat.gui 먼저 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
-  </head>
-  <body>
-    <script src="pumpkin_imp.js"></script>
-    <!-- MathJax for equations -->
+
+    <!-- MathJax 설정 및 로드 -->
     <script>
-      window.MathJax = { tex: { inlineMath: [['\\(','\\)'], ['$', '$']] }, svg: { fontCache: 'global' } };
+      window.MathJax = {
+        tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+        svg: { fontCache: 'global' }
+      };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <!-- p5 스케치: p5가 이미 head에서 로드되었으니 순서 OK -->
+    <script src="pumpkin_imp.js"></script>
   </body>
 </html>
